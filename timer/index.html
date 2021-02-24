@@ -10,22 +10,42 @@
     <div id="container-whole" class="container">
         <nav id="navbar">
             <ul>
-                <li>Stopwatch</li>
-                <li>Timer</li>
-                <li>Clock</li>
+                <li><div id="nav-stopwatch" class="nav-select">Stopwatch</a></li>
+                <li><div id="nav-timer" class="nav-select">Timer</a></li>
+                <li><div id="nav-clock" class="nav-select">Clock</a></li>
             </ul>
         </nav>
         <main>
             <div id="container-main" class="container">
-                <div id="time">
-                    <h2 id="time-num">00:00:00:00</h2>
+                <!-- Stopwatch time -->
+                <div id="time-stopwatch" class="container-time">
+                    <h2 id="num-stopwatch" class="num">00:00:00:00</h2>
                 </div>
+                <!-- Timer time -->
+                <div id="time-timer" class="container-time">
+                    <h2 id="num-timer" class="num">00:00:00:00</h2>
+                </div>
+
+                <!-- Stopwatch controls -->
                 <div id="controls-stopwatch" class="controls">
-                    <div id="wrapper-btn" class="wrapper">
-                        <div id="start-stopwatch" class="btn" type="button">START</div>
-                        <div id="reset-stopwatch" class="btn" type="button">RESET</div>
+                    <div id="wrapper-btn" class="wrapper-controls-stopwatch">
+                        <div id="start-stopwatch" class="stopwatch-btn btn">START</div>
+                        <div id="reset-stopwatch" class="stopwatch-btn btn">RESET</div>
                     </div>
                 </div>
+                <!-- Timer controls -->
+                <div id="controls-timer" class="controls">
+                    <div id="wrapper-btn-bottom" class="wrapper-controls-timer">
+                        <div id="start-timer" class="timer-btn btn">START</div>
+                        <div id="reset-timer" class="timer-btn btn">RESET</div>
+                    </div>                    
+                    <div id="wrapper-btn-top" class="wrapper-controls-timer">
+                        <div id="hours-timer" class="timer-btn btn">HOURS</div>
+                        <div id="minutes-timer" class="timer-btn btn">MINUTES</div>
+                        <div id="seconds-timer" class="timer-btn btn">SECONDS</div>
+                    </div>                    
+                </div>
+                
             </div>
         </main>
     </div>

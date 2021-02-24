@@ -1,69 +1,117 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap');
 
+/* Generic selectors */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+
+    /* Variables */
+    --start-btn-color: #a2e6a2;
 }
 
 html, body {
     height: 100%;
+    min-height: 100%;
     margin: 0;
     font-family: 'Roboto', sans-serif;
 }
 
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
 #container-whole {
     min-height: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
 }
 
 main {
-    flex-grow: 1;
+    flex: 8 0 400px;
     display: flex;
     flex-direction: column;
-    border: solid red 1px;
 }
 
+/* Navbar */
 #navbar {
-    flex-basis: 15vh;
+    flex: 1 0 100px;
+    display: flex;
+}
+
+#navbar ul {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 100%;
+}
+
+#navbar ul li {
+    display: flex;
+    flex: 1 0 30px;
+    height: 100%;
+    min-height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+div.nav-select {
+    display: flex;
+    font-size: 2rem;
+    height: 100%;
+    min-height: 100%;
+    min-width: 100%;
+    justify-content: center;
+    align-items: center;
+    border: 1px grey solid;
+    cursor: pointer;
 }
 
 /* Main/timer/status */
 #container-main {
     display: flex;
     flex-direction: column;
-    flex: 1 1 400px;
+    flex: 1 0 400px;
 }
 
-/* Timer */
-#time {
-    flex: 2 1 200px;
+/* Stopwatch-timer */
+.container-time {
+    flex: 4 0 200px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#time-num {
+#num-stopwatch,
+#num-timer {
     font-size: 4rem;
 }
 
 /* Controls */
-#controls-stopwatch {
+.controls {
     flex: 1 1 200px;
     display: flex;
-    justify-content: center;
-    align-items: stretch;
 }
 
-#wrapper-btn {
+.wrapper-controls-stopwatch {
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
-.btn {
+/* Controls-Stopwatch */
+#controls-stopwatch {
+    justify-content: center;
+    align-items: stretch;
+}
+.stopwatch-btn {
     flex: 1 1 50px;
     font-size: 3rem;
     font-weight: 700;
@@ -71,15 +119,33 @@ main {
     justify-content: center;
     align-items: center;
     border: 1px solid grey;
+    cursor: pointer;
+    user-select: none;
 }
 
 #start-stopwatch {
-    background: #a2e6a2;
+    background: var(--start-btn-color);
 }
 
 #reset-stopwatch {
     background: #b1afaf;
 }
+ /* Controls-Timer */
+#controls-timer {
+    display: flex;
+    flex-direction: column;
+}
 
+.wrapper-controls-timer {
+    border: 1px solid red;
+    display: flex;
+    flex: 1;
+}
 
-
+.timer-btn {
+    display: flex;
+    border: 1px solid grey;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+ }
