@@ -131,8 +131,12 @@ div.nav-select {
     user-select: none;
 }
 
-#start-stopwatch {
+.startwatch {
     background: var(--start-btn-color);
+}
+
+.stop-stopwatch {
+    background: var(--stop-btn-color);
 }
 
 #reset-stopwatch {
@@ -181,10 +185,19 @@ input[type=number]::-webkit-outer-spin-button {
 
 #start-timer {
     background: var(--start-btn-color);
+    cursor: pointer;
 }
 
 #reset-timer {
     background: var(--reset-btn-color);
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+#reset-timer p {
+    font-size: 1.5rem;
+    font-weight: 500;
 }
 
 .input-btn {

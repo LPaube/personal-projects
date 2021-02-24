@@ -65,11 +65,13 @@ function toolStopWatch() {
     // Start/Stop button
     function startStop() {
         if (status === "stopped") {
-            document.getElementById("start-stopwatch").innerHTML = "STOP";
+            startButton.innerHTML = "STOP";
+            startButton.classList.add("stop-stopwatch");
             timerInterval = setInterval(stopWatch, 10);
             status = "started";
         } else if (status === "started") {
-            document.getElementById("start-stopwatch").innerHTML = "START";
+            startButton.innerHTML = "START";
+            startButton.classList.remove("stop-stopwatch");
             clearInterval(timerInterval);
             displayTime();
             status = "stopped";
@@ -93,7 +95,7 @@ function toolStopWatch() {
 // Timer
 function toolTimer() {
     // Variables
-    var hours = 0;
+    var hours = 2;
     var minutes = 0;
     var seconds = 0;
     var milliseconds = 0;
@@ -103,6 +105,9 @@ function toolTimer() {
     var secondsDisplayed = 0;
     var millisecondsDisplayed = 0;
 
+    var status = "stopped";
+    var timerInterval;
+
     var startButton = document.getElementById("start-timer");
     var resetButton = document.getElementById("reset-timer");
     var hoursNum = document.getElementById("hours-input"); 
@@ -110,10 +115,89 @@ function toolTimer() {
     var secondsNum = document.getElementById("seconds-input"); 
     var numTimer = document.getElementById("num-timer");
 
+    function startStop() {
+        if (status === "stopped") {
+            startButton.innerHTML = "STOP";
+            timerInterval = setInterval(timer, 10);
+            status = "started";
+        } else if (status === "started") {
+            startButton.innerHTML = "START";
+            clearInterval(timerInterval);
+            displayTime();
+            status = "stopped";
+        }
+    }
+
+    function timerSet() {
+        hours = hoursNum.value;
+        minutes = minutesNum.value;
+        seconds = secondsNum.value;
+        milliseconds = 0;
+
+        if (hours == "") {
+            hours = 0;
+        }
+        if (minutes == "") {
+            minutes = 0;
+        }
+        if (seconds == "") {
+            seconds = 0;
+        }
+        console.log("hours", hours);
+        console.log("minutes", minutes);
+
+        displayTime();
+    }
+
+    function timer() {
+            if (hours > -1 && minutes <= -1) {
+                minutes = 59;
+                hours--;
+            }
+            if (minutes > -1 && seconds <= -1) {
+                seconds = 59;
+                minutes--;
+            }
+            if (seconds > -1 && milliseconds <= -1) {
+                milliseconds = 99;
+                seconds--;
+            }
+            milliseconds--;
+            displayTime();
+    }
+
+
+    function displayTime() {
+        if (milliseconds < 10) {
+            millisecondsDisplayed = "0" + milliseconds.toString();
+        } else {
+            millisecondsDisplayed = milliseconds.toString();
+        }
+        if (seconds < 10) {
+            secondsDisplayed = "0" + seconds.toString();
+        } else {
+            secondsDisplayed = seconds.toString();
+        }
+        if (minutes < 10) {
+            minutesDisplayed = "0" + minutes.toString();
+        } else {
+            minutesDisplayed = minutes.toString();
+        }
+        if (hours < 10) {
+            hoursDisplayed = "0" + hours.toString();
+        } else {
+            hoursDisplayed = hours.toString();
+        }
+        timeDisplayed = hoursDisplayed + ":" + minutesDisplayed + ":" + secondsDisplayed // + ":" + millisecondsDisplayed;
+        numTimer.innerHTML = timeDisplayed;
+    }
+
     // Event listeners
     startButton.addEventListener("click", function() {
+        startStop();
         console.log("hours:", hoursNum.value, " minutes:", minutesNum.value, " seconds:", secondsNum.value);
     });
+    resetButton.addEventListener("click", timerSet);
 }
 
 
