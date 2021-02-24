@@ -1,5 +1,5 @@
 
-
+// Stopwatch
 function toolStopWatch() {
     // Variables
     var milliseconds = 0;
@@ -90,6 +90,33 @@ function toolStopWatch() {
     document.getElementById("reset-stopwatch").addEventListener("click", reset);
 }
 
+// Timer
+function toolTimer() {
+    // Variables
+    var hours = 0;
+    var minutes = 0;
+    var seconds = 0;
+    var milliseconds = 0;
+
+    var hoursDisplayed = 0;
+    var minutesDisplayed = 0;
+    var secondsDisplayed = 0;
+    var millisecondsDisplayed = 0;
+
+    var startButton = document.getElementById("start-timer");
+    var resetButton = document.getElementById("reset-timer");
+    var hoursNum = document.getElementById("hours-input"); 
+    var minutesNum = document.getElementById("minutes-input"); 
+    var secondsNum = document.getElementById("seconds-input"); 
+    var numTimer = document.getElementById("num-timer");
+
+    // Event listeners
+    startButton.addEventListener("click", function() {
+        console.log("hours:", hoursNum.value, " minutes:", minutesNum.value, " seconds:", secondsNum.value);
+    });
+}
+
+
 // Functions performed when nav clicked (show/hide)
 function clickStopWatch() {
     document.getElementById("controls-stopwatch").style.display = "flex";
@@ -108,6 +135,7 @@ function clickTimer() {
 function startingState() {
     clickStopWatch();
     toolStopWatch();
+    toolTimer();
 }
 
 // Function calls
