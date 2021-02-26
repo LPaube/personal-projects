@@ -21,11 +21,6 @@
                 <div id="time-stopwatch" class="container-time">
                     <h2 id="num-stopwatch" class="num">00:00:00:00</h2>
                 </div>
-                <!-- Timer time -->
-                <div id="time-timer" class="container-time">
-                    <h2 id="num-timer" class="num">00:00:00</h2>
-                </div>
-
                 <!-- Stopwatch controls -->
                 <div id="controls-stopwatch" class="controls">
                     <div id="wrapper-btn" class="wrapper-controls-stopwatch">
@@ -33,12 +28,13 @@
                         <div id="reset-stopwatch" class="stopwatch-btn btn">RESET</div>
                     </div>
                 </div>
+
+                <!-- Timer time -->
+                <div id="time-timer" class="container-time">
+                    <h2 id="num-timer" class="num">00:00:00</h2>
+                </div>
                 <!-- Timer controls -->
                 <div id="controls-timer" class="controls">
-                    <div id="wrapper-btn-top" class="wrapper-controls-timer">
-                        <div id="start-timer" class="timer-btn btn">START</div>
-                        <div id="reset-timer" class="timer-btn btn">SET<p>WITH NEW NUMBERS</p></div>
-                    </div>                    
                     <div id="wrapper-btn-bottom" class="wrapper-controls-timer">
                         <div id="hours-timer" class="timer-btn input-btn btn">
                             <label for="hours-input">HOURS</label>
@@ -52,10 +48,22 @@
                             <label for="seconds-input">SECONDS</label>
                             <input type="number" id="seconds-input" name="seconds" min="0" maxlength="2" value="0">
                         </div>
-
+                    </div>                    
+                    <div id="wrapper-btn-top" class="wrapper-controls-timer">
+                        <div id="start-timer" class="timer-btn btn">START</div>
+                        <div id="reset-timer" class="timer-btn btn">SET<p>WITH NEW NUMBERS</p></div>
                     </div>                    
                 </div>
-                
+
+                <!-- Clock timer -->
+                <div id="time-clock" class="container-time">
+                    <h2 id="num-clock" class="num">00:00:00</h2>
+                </div>
+                <!-- Clock controls -->
+                <div id="controls-clock" class="controls">
+                    <div id="12-hour" class="clock-control">12-HOUR CLOCK</div>
+                    <div id="24-hour" class="clock-control">24-HOUR CLOCK</div>
+                </div>
             </div>
         </main>
     </div>

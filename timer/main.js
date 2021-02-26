@@ -95,7 +95,7 @@ function toolStopWatch() {
 // Timer
 function toolTimer() {
     // Variables
-    var hours = 2;
+    var hours = 0;
     var minutes = 0;
     var seconds = 0;
     var milliseconds = 0;
@@ -143,29 +143,28 @@ function toolTimer() {
         if (seconds == "") {
             seconds = 0;
         }
-        console.log("hours", hours);
-        console.log("minutes", minutes);
-
         displayTime();
     }
 
     function timer() {
-            if (hours > -1 && minutes <= -1) {
-                minutes = 59;
-                hours--;
+        if (milliseconds > 0 || seconds > 0 || minutes > 0 || hours > 0) {
+            if (seconds > -1 && milliseconds <= -1) {
+                milliseconds = 99;
+                seconds--;
             }
             if (minutes > -1 && seconds <= -1) {
                 seconds = 59;
                 minutes--;
             }
-            if (seconds > -1 && milliseconds <= -1) {
-                milliseconds = 99;
-                seconds--;
+            if (hours > -1 && minutes <= -1) {
+                minutes = 59;
+                hours--;
             }
+            
             milliseconds--;
             displayTime();
+        }
     }
-
 
     function displayTime() {
         if (milliseconds < 10) {
@@ -200,6 +199,49 @@ function toolTimer() {
     resetButton.addEventListener("click", timerSet);
 }
 
+// Clock function
+function toolClock() {
+    var timeDisplayed;
+    var milState = "regular";
+
+    setInterval(clock, 10);
+
+    function clock() {
+        var date = new Date();
+        timeDisplayed = date.toLocaleTimeString();
+        
+        // Setting military time
+        function militaryClock() {
+            const splitTime = timeDisplayed.split(":");
+            var militaryDisplay = "";
+            if (splitTime[splitTime.length - 1].split(" ")[1] == "AM") {
+                if (parseInt(splitTime[0]) < 10) {
+                    militaryDisplay = "0" + splitTime[0] + ":" + splitTime[1] + ":" + splitTime[2].split(" ")[0];
+                } else if (parseInt(splitTime[0]) <= 10) {
+                    militaryDisplay = splitTime[0] + ":" + splitTime[1] + ":" + splitTime[2].split(" ")[0];
+                }
+            } else {
+                militaryDisplay = (parseInt(splitTime[0]) + 12) + ":" + splitTime[1] + ":" + splitTime[2].split(" ")[0];
+            }
+            document.getElementById("num-clock").innerHTML = militaryDisplay;
+        }
+
+        if (milState === "regular") {
+            document.getElementById("num-clock").innerHTML = timeDisplayed;
+        } else if (milState === "military") {
+           militaryClock();
+        }
+    }
+    clock();
+
+    // Clock - event listeners
+    document.getElementById("12-hour").addEventListener("click", function() {
+        milState = "regular";
+    });
+    document.getElementById("24-hour").addEventListener("click", function() {
+        milState = "military";
+    });
+}
 
 // Functions performed when nav clicked (show/hide)
 function clickStopWatch() {
@@ -207,6 +249,9 @@ function clickStopWatch() {
     document.getElementById("time-stopwatch").style.display = "flex";
     document.getElementById("controls-timer").style.display = "none";
     document.getElementById("time-timer").style.display = "none";
+    document.getElementById("time-clock").style.display = "none";
+    document.getElementById("controls-clock").style.display = "none";
+
 }
 
 function clickTimer() {
@@ -214,12 +259,25 @@ function clickTimer() {
     document.getElementById("time-stopwatch").style.display = "none";
     document.getElementById("controls-timer").style.display = "flex";
     document.getElementById("time-timer").style.display = "flex";
+    document.getElementById("time-clock").style.display = "none";
+    document.getElementById("controls-clock").style.display = "none";
+
+}
+
+function clickClock() {
+    document.getElementById("controls-stopwatch").style.display = "none";
+    document.getElementById("time-stopwatch").style.display = "none";
+    document.getElementById("controls-timer").style.display = "none";
+    document.getElementById("time-timer").style.display = "none";
+    document.getElementById("time-clock").style.display = "flex";
+    document.getElementById("controls-clock").style.display = "flex";
 }
 
 function startingState() {
     clickStopWatch();
     toolStopWatch();
     toolTimer();
+    toolClock();
 }
 
 // Function calls
@@ -227,3 +285,4 @@ startingState();
 
 document.getElementById("nav-stopwatch").addEventListener("click", clickStopWatch);
 document.getElementById("nav-timer").addEventListener("click", clickTimer);
+document.getElementById("nav-clock").addEventListener("click", clickClock);
