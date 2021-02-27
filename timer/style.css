@@ -3,17 +3,19 @@
 
 /* Generic selectors */
 * {
+    /* Variables */
+    --btn-main-clr: #fff;
+    --btn-second-clr: #eee;
+    --nav-color: #fff;
+    --border-main: #000 solid 4px;
+    --bg-main-clr: #ddd;
+    --start-clr: #53d153;
+    --stop-clr: #ff4040;
+
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-
-    /* Variables */
-    --start-btn-color: #a2e6a2;
-    --stop-btn-color: #ac1a1a;
-    --reset-btn-color: gray;
-    --input-btn-color: #4377d8;
-    --nav-color: #da8;
-    --border-color: #fff;
+    border-collapse: collapse;
 }
 
 html, body {
@@ -38,6 +40,7 @@ a {
     height: 100%;
     display: flex;
     flex-direction: column;
+    background-color: var(--bg-main-clr);
 }
 
 main {
@@ -70,16 +73,54 @@ main {
 
 div.nav-select {
     display: flex;
+    flex-direction: column;
     font-size: 2rem;
     height: 100%;
     min-height: 100%;
     min-width: 100%;
     justify-content: center;
     align-items: center;
-    border: var(--border-color) solid 1px;
+    border: var(--border-main);
     background-color: var(--nav-color);
     cursor: pointer;
 }
+
+#nav-timer {
+    border-left: 0;
+    border-right: 0;
+}
+
+.nav-select i {
+    font-size: 3rem;
+    flex: 1 0 10px;
+    margin: 10px;
+}
+
+.nav-select h2 {
+    flex: 1 0 10px;
+    margin-top: 20px;
+    font-size: 2.5rem;
+    max-height: 2.8rem;
+}
+
+.pressed-btn {
+    background-color: var(--bg-main) !important;
+    border-bottom: 0 !important;
+}
+
+#nav-stopwatch.pressed-btn {
+    border-left: 0 !important;
+}
+
+#nav-clock.pressed-btn {
+    border-right: 0 !important;
+}
+
+.pressed-btn i {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+}
+
 
 /* Main/timer/status */
 #container-main {
@@ -96,11 +137,19 @@ div.nav-select {
     align-items: center;
 }
 
+#time-stopwatch {
+    display: flex;
+    flex-direction: column;
+}
+
 #num-stopwatch,
 #num-timer,
 #num-clock {
     font-size: 4rem;
-    user-select: none;
+}
+
+#time-description {
+    display: inline-block;
 }
 
 /* Controls */
@@ -115,6 +164,7 @@ div.nav-select {
     justify-content: center;
 }
 
+
 /* Controls-Stopwatch */
 #controls-stopwatch {
     justify-content: center;
@@ -125,25 +175,41 @@ div.nav-select {
     font-size: 3rem;
     font-weight: 700;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     cursor: pointer;
 }
 
-.stopwatch-btn {
-    border: 1px solid var(--border-color);
+.stopwatch-btn i {
+    font-size: 3rem;
+    padding: 15px 0 5px 0;
+}
+
+#start-stopwatch i {
+    color: var(--start-clr);
+}
+
+.stop-stopwatch i {
+    color: var(--stop-clr) !important;
 }
 
 .startwatch {
-    background: var(--start-btn-color);
+    background: var(--btn-main-clr);
+    display: flex;
+    border: var(--border-main);
 }
 
 .stop-stopwatch {
-    background: var(--stop-btn-color);
+    background: var(--btn-second-clr);
+    border: var(--border-main);
 }
 
 #reset-stopwatch {
-    background: var(--reset-btn-color);
+    background-color: var(--btn-main-clr);
+    border: var(--border-main);
+    border-left: 0;
+
 }
  /* Controls-Timer */
 #controls-timer {
@@ -158,10 +224,13 @@ div.nav-select {
 
 #wrapper-btn-top {
     font-size: 2rem;
+    font-weight: 700;
+    flex: 1.5;
 }
 
 #wrapper-btn-bottom {
     font-size: 1.5rem;
+    flex: 1;
 }
 
 .timer-btn {
@@ -170,7 +239,7 @@ div.nav-select {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    border: 1px solid var(--border-color);
+    border: var(--border-main);
  }
 
 #wrapper-btn-bottom input {
@@ -188,7 +257,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 #start-timer {
-    background: var(--start-btn-color);
+    background-color: var(--btn-main-clr);
     cursor: pointer;
 }
 
@@ -197,6 +266,8 @@ input[type=number]::-webkit-outer-spin-button {
     display: flex;
     flex-direction: column;
     cursor: pointer;
+    border-left: 0;
+    background-color: var(--btn-main-clr);
 }
 
 #reset-timer p {
@@ -205,13 +276,39 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .input-btn {
-    background: var(--input-btn-color);
-    border: var(--border-color) 1px solid;
+    background: var(--btn-main-clr);
+    border: var(--border-main);
+    border-bottom: 0;
 }
+
+#hours-timer {
+    border-right: 0;
+}
+
+#seconds-timer {
+    border-left: 0;
+}
+
+#start-timer i {
+    color: var(--start-clr);
+    padding-top: 1rem;
+}
+
+#reset-timer i {
+    padding-top: 1rem;
+}
+
+.fa-pause {
+    color: red !important;
+}
+
+.timer-stopped {
+    background-color: var(--btn-second-clr) !important;
+}
+
 
 /* Controls clock */
 #controls-clock {
-    background: grey;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -227,4 +324,32 @@ input[type=number]::-webkit-outer-spin-button {
     font-size: 3rem;
     font-weight: 700;
     cursor: pointer;
+    background: var(--btn-main-clr);
+    border: var(--border-main);
+}
+
+[id="12-hour"] {
+    border-right: 0;
+}
+
+[id="12-hour"].pressed-hour {
+    border-top: 0;
+    border-left: 0;
+    background-color: var(--bg-main-clr);
+}
+
+[id="24-hour"].pressed-hour {
+    border-top: 0;
+    border-right: 0;
+    background-color: var(--bg-main-clr);
+}
+
+.clock-control h2 {
+    font-size: 3rem;
+}
+
+.pressed-hour h2 {
+    padding: 10px 20px;
+    border: 4px solid black;
+    border-radius: 10px;
 }

@@ -65,12 +65,12 @@ function toolStopWatch() {
     // Start/Stop button
     function startStop() {
         if (status === "stopped") {
-            startButton.innerHTML = "STOP";
+            startButton.innerHTML = 'PAUSE<i class="fas fa-pause"></i>';
             startButton.classList.add("stop-stopwatch");
             timerInterval = setInterval(stopWatch, 10);
             status = "started";
         } else if (status === "started") {
-            startButton.innerHTML = "START";
+            startButton.innerHTML = 'START<i class="fas fa-play"></i>';
             startButton.classList.remove("stop-stopwatch");
             clearInterval(timerInterval);
             displayTime();
@@ -83,7 +83,6 @@ function toolStopWatch() {
         seconds = 0;
         minutes = 0;
         hours = 0;
-        console.log("reseting");
         displayTime();
     }
 
@@ -117,11 +116,13 @@ function toolTimer() {
 
     function startStop() {
         if (status === "stopped") {
-            startButton.innerHTML = "STOP";
+            startButton.innerHTML = 'PAUSE<i class="fas fa-pause"></i>';
+            document.getElementById('start-timer').classList.add('timer-stopped');
             timerInterval = setInterval(timer, 10);
             status = "started";
         } else if (status === "started") {
-            startButton.innerHTML = "START";
+            startButton.innerHTML = 'START<i class="fas fa-play"></i>';
+            document.getElementById('start-timer').classList.remove('timer-stopped');
             clearInterval(timerInterval);
             displayTime();
             status = "stopped";
@@ -194,7 +195,6 @@ function toolTimer() {
     // Event listeners
     startButton.addEventListener("click", function() {
         startStop();
-        console.log("hours:", hoursNum.value, " minutes:", minutesNum.value, " seconds:", secondsNum.value);
     });
     resetButton.addEventListener("click", timerSet);
 }
@@ -213,11 +213,11 @@ function toolClock() {
         // Setting military time
         function militaryClock() {
             const splitTime = timeDisplayed.split(":");
-            var militaryDisplay = "";
+            var militaryDisplay = "00:00:00";
             if (splitTime[splitTime.length - 1].split(" ")[1] == "AM") {
                 if (parseInt(splitTime[0]) < 10) {
                     militaryDisplay = "0" + splitTime[0] + ":" + splitTime[1] + ":" + splitTime[2].split(" ")[0];
-                } else if (parseInt(splitTime[0]) <= 10) {
+                } else if (parseInt(splitTime[0]) >= 10) {
                     militaryDisplay = splitTime[0] + ":" + splitTime[1] + ":" + splitTime[2].split(" ")[0];
                 }
             } else {
@@ -237,9 +237,13 @@ function toolClock() {
     // Clock - event listeners
     document.getElementById("12-hour").addEventListener("click", function() {
         milState = "regular";
+        document.getElementById('12-hour').classList.add('pressed-hour');
+        document.getElementById('24-hour').classList.remove('pressed-hour');
     });
     document.getElementById("24-hour").addEventListener("click", function() {
         milState = "military";
+        document.getElementById('12-hour').classList.remove('pressed-hour');
+        document.getElementById('24-hour').classList.add('pressed-hour');
     });
 }
 
@@ -252,6 +256,9 @@ function clickStopWatch() {
     document.getElementById("time-clock").style.display = "none";
     document.getElementById("controls-clock").style.display = "none";
 
+    document.getElementById('nav-stopwatch').classList.add('pressed-btn');
+    document.getElementById('nav-timer').classList.remove('pressed-btn');
+    document.getElementById('nav-clock').classList.remove('pressed-btn');
 }
 
 function clickTimer() {
@@ -261,7 +268,10 @@ function clickTimer() {
     document.getElementById("time-timer").style.display = "flex";
     document.getElementById("time-clock").style.display = "none";
     document.getElementById("controls-clock").style.display = "none";
-
+    
+    document.getElementById('nav-stopwatch').classList.remove('pressed-btn');
+    document.getElementById('nav-timer').classList.add('pressed-btn');
+    document.getElementById('nav-clock').classList.remove('pressed-btn');
 }
 
 function clickClock() {
@@ -271,6 +281,10 @@ function clickClock() {
     document.getElementById("time-timer").style.display = "none";
     document.getElementById("time-clock").style.display = "flex";
     document.getElementById("controls-clock").style.display = "flex";
+
+    document.getElementById('nav-stopwatch').classList.remove('pressed-btn');
+    document.getElementById('nav-timer').classList.remove('pressed-btn');
+    document.getElementById('nav-clock').classList.add('pressed-btn');
 }
 
 function startingState() {

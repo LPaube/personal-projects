@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Timer</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <div id="container-whole" class="container">
         <nav id="navbar">
             <ul>
-                <li><div id="nav-stopwatch" class="nav-select">Stopwatch</a></li>
-                <li><div id="nav-timer" class="nav-select">Timer</a></li>
-                <li><div id="nav-clock" class="nav-select">Clock</a></li>
+                <li><div id="nav-stopwatch" class="nav-select"><h2>STOPWATCH</h2><i class="fas fa-stopwatch"></i></a></li>
+                <li><div id="nav-timer" class="nav-select"><h2>TIMER</h2><i class="fas fa-stopwatch-20"></i></a></li>
+                <li><div id="nav-clock" class="nav-select"><h2>CLOCK</h2><i class="fas fa-clock"></i></a></li>
             </ul>
         </nav>
         <main>
@@ -24,8 +25,8 @@
                 <!-- Stopwatch controls -->
                 <div id="controls-stopwatch" class="controls">
                     <div id="wrapper-btn" class="wrapper-controls-stopwatch">
-                        <div id="start-stopwatch" class="startwatch stopwatch-btn btn">START</div>
-                        <div id="reset-stopwatch" class="stopwatch-btn btn">RESET</div>
+                        <div id="start-stopwatch" class="startwatch stopwatch-btn btn">START<i class="fas fa-play"></i></div>
+                        <div id="reset-stopwatch" class="stopwatch-btn btn">RESET<i class="fas fa-redo"></i></div>
                     </div>
                 </div>
 
@@ -50,8 +51,8 @@
                         </div>
                     </div>                    
                     <div id="wrapper-btn-top" class="wrapper-controls-timer">
-                        <div id="start-timer" class="timer-btn btn">START</div>
-                        <div id="reset-timer" class="timer-btn btn">SET<p>WITH NEW NUMBERS</p></div>
+                        <div id="start-timer" class="timer-btn btn">START<i class="fas fa-play"></i></div>
+                        <div id="reset-timer" class="timer-btn btn">SET<p>WITH NEW NUMBERS</p><i class="fas fa-arrow-circle-up"></i></div>
                     </div>                    
                 </div>
 
@@ -61,8 +62,8 @@
                 </div>
                 <!-- Clock controls -->
                 <div id="controls-clock" class="controls">
-                    <div id="12-hour" class="clock-control">12-HOUR CLOCK</div>
-                    <div id="24-hour" class="clock-control">24-HOUR CLOCK</div>
+                    <div id="12-hour" class="clock-control pressed-hour"><h2>12-HOUR CLOCK</h2></div>
+                    <div id="24-hour" class="clock-control"><h2>24-HOUR CLOCK</h2></div>
                 </div>
             </div>
         </main>
