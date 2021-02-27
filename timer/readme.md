@@ -1,4 +1,5 @@
-This timer is my first project that reunites html, css, and javascript. It makes use of the following notable technologies/techniques:
+This timer is my first project that reunites html, css, and javascript. This project creates a stopwatch, a timer, or a clock depending on the option clicked.
+It makes use of the following notable technologies/techniques:
 
 - Vanilla javascript for the functionality of the timers, and to hide/show elements depending on the tool selected:
   - Date handling (Date object)
